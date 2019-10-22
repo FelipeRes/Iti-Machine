@@ -1,0 +1,136 @@
+false = 0
+true = 1
+
+if started == false
+    random = random + 1
+    ballx = 64
+    bally = 8
+    arcx = 48
+    ballSprite = 2
+    arcSprite = 4
+    vectorx = 64
+    vectory = 8
+endif
+
+if input.horizontal != 0
+    if started == false
+        started = true
+        directionx = input.horizontal
+        directiony = 1
+        ballx = 64
+        bally = 8
+        vectorx = 3200
+        vectory = 450
+        velocityx = 20
+    endif
+endif
+
+x = 0
+while x < 128
+    y = 0
+    while y < 128
+        video.draw16 : x y 0 0
+        y = y + 16
+    endwhile
+    x = x + 16
+endwhile
+
+if gameover == false
+    velocityy = 80 - velocityx
+    if started == true
+        vectorx = velocityx * directionx + vectorx
+        vectory = velocityy * directiony + vectory
+        ballx = vectorx / 50
+        bally = vectory / 50
+    endif
+
+
+    if ballx > 128
+        directionx = -1
+    endif
+    if ballx < 0
+        directionx = 1
+    endif
+    if bally > 128
+        directiony = -1
+    endif
+
+    video.draw8 : ballx bally ballSprite 0
+    arcx = arcx + input.horizontal
+    video.draw16 : arcx 0 arcSprite 0
+    arcx2 = arcx + 16
+    arcSprite2 = arcSprite + 2
+    video.draw16 : arcx2 0 arcSprite2 0
+endif
+
+
+distanceBall = ballx - arcx2
+
+if bally <= 8
+    if distanceBall > -24
+        if distanceBall < 16
+            directiony = 1
+            velocityx = distanceBall * 2
+            directionx = 1
+            if distanceBall < 0
+                directionx = -1
+                velocityx = velocityx * -1
+            endif
+        endif
+    endif
+endif
+if bally <= 0
+    gameover = true
+endif
+if win >= 50
+    gameover = true
+endif
+
+i = #blockList
+by = 64
+bx = -8
+color = 9
+while i <= #blockList + 49
+    if ballx > bx 
+        if ballx < bx + 16
+            if bally > by 
+                if bally < by + 8
+                    if @i == false
+                        @i = true
+                        directiony = directiony * -1
+                        win = win + 1
+                    endif
+                endif
+            endif
+        endif
+    endif
+    if @i == false
+        video.draw8 : bx by color 1
+        tempx = bx + 7
+        video.draw8 : tempx by color -1
+    endif
+    bx = bx + 16
+    i = i + 1
+    color = color + 1
+    if color > 15
+        color = 10
+    endif
+    if bx > 112
+        by = by + 8
+        bx = 8
+    endif
+endwhile
+
+if gameover == true
+    if win >= 50
+        video.draw16 : 40 58 32 1
+        video.draw16 : 56 58 34 1
+        video.draw16 : 72 58 36 1
+    endif
+    if win < 50
+        video.draw16 : 32 58 64 1
+        video.draw16 : 48 58 66 1
+        video.draw16 : 64 58 68 1
+        video.draw16 : 80 58 70 1
+    endif
+endif

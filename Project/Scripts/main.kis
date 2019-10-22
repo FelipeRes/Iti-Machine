@@ -1,0 +1,67 @@
+true = 1
+false = 0
+left = -1
+right = 1
+idle = 48
+
+tile = 54
+tiles_x = 0
+while tiles_x < 128
+	tiles_y = 0
+	while tiles_y < 128
+        video.draw16 : tiles_x tiles_y tile right
+		tiles_y = tiles_y + 16
+	endwhile
+	tiles_x = tiles_x + 16
+endwhile
+
+x = x + input.horizontal
+y = y + input.vertical
+
+if input.horizontal > 0
+    direction = 1
+    animation_frame = animation_frame + 1
+endif
+if input.horizontal < 0
+    direction = -1
+    animation_frame = animation_frame + 1
+endif
+if animation_frame > 16
+    animation = animation + 2
+    if animation > 38
+        animation = 32
+    endif
+    animation_frame = 0 
+endif
+if input.horizontal == 0
+    animation = idle
+    animation_frame = 0 
+endif
+
+px = x / 4
+py = y / 4
+
+video.draw16 : px py animation direction
+
+video.draw8 : 32 64 0 1
+video.draw8 : 32 72 0 1
+video.draw8 : 32 80 0 1
+video.draw8 : 32 88 0 1
+video.draw8 : 32 96 0 1
+video.draw8 : 40 80 0 1
+video.draw8 : 48 64 0 1
+video.draw8 : 48 72 0 1
+video.draw8 : 48 80 0 1
+video.draw8 : 48 88 0 1
+video.draw8 : 48 96 0 1
+
+video.draw8 : 64 64 0 1
+video.draw8 : 64 72 0 1
+video.draw8 : 64 80 0 1
+video.draw8 : 64 96 0 1
+
+video.draw8 : 80 64 0 1
+video.draw8 : 80 80 0 1
+video.draw8 : 80 88 0 1
+video.draw8 : 80 96 0 1
+
