@@ -261,8 +261,9 @@ c = a + b		//$44 memory adrress
 //Assembly convertion:
 SET		: 123		//target recives the 123 immediate
 MOVE OUT 	: $22		//$22 address recives the value of target
-MOVE IN 	: $22 		//stores the value of $22 in target
+SET 		: 44 		//target recives the 44 immediate
 MOVE OUT 	: $33 		//The $33 recives the value from target
+
 MOVE IN	 	: $22		//target recives the value from $44
 MOVE OUT 	: $0		//worka recives the value of target
 MOVE IN		: $33 		//target recives the value from $22
