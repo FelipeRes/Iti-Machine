@@ -1,6 +1,6 @@
 ![Iti Machine](https://i.imgur.com/x1zaq4u.png "logo")
 
-#Overview
+# Overview
 
 Create by: Felipe Resende (feliperesendehq@outlook.com)
 
@@ -15,10 +15,10 @@ Audio: In development...
 Device Support: Keyborad for while.
 Emulator : Windows 32 or 64 bits.
 
-#Files and Emulation
+# Files and Emulation
 The emulator and internal builder runs in __Unity 2018.4.5f1__ and when you open *ItiMachine.exe*, it will read the script file in Project folder, builder its and generate the ROM and then, will fetch the ROM file in the virtual machine.
 
-####File Struct:
+#### File Struct:
 + ItiMachine.exe
 + UnityPlayer.dll
 + Project
@@ -35,7 +35,7 @@ __main.kis__ is the code of your game. It uses KIS language.
 __main.var__ is the file to you write the variables.
 __0.png__ is the spritesheet of your game. You can change the lenght, but is recommended maintain multiples of 2 like 256 x 256 or 1024 x 1024 pixels. The format must be PNG. 
 
-#KIS Language
+# KIS Language
 The purpose of KIS Language is be a simple way to programming hardwares with very low memomry and CPU usage. KIS sintax is similar to ruby or python and it works like a command line. The main feature is about the variables, they are declared in another file (__main.var__) and the logic code is type in __main.kis__. The order of variables is literaly the order of RAM memory registers and the amount of variables is the amount of memory statically allocated. You don't need allocate and free memory because you don't have memory manager. You aways can use all the memory you address. There is only signed interger type in Iti Machine with 32-bits. The value is from -2.147.483.648‬ to 2.147.483.648‬. 
 
 The language is blockly and the spaces between the operators are important. The statments are defined by line breaks and ou can identity your code. You can only make this actions:
@@ -179,7 +179,7 @@ video.draw16 : 52 52 32 1
 ```
 The lenght of sprite don't change the patter of spritesheet grid, in other hand, this means the function cuts the spritesheet on id position and the number in the end of function determines the lenght of sprite. The Id grid can grow up with the lenght of tileset, but the patter is the same.
 
-__ Inputs __ is a module to read a keyboard. Only read the values to get if the key was pressed. The horizontal or and vertical axis are defined like 1, 0 or -1. There are 2 axis and 4 keys to read in the device driver.
+__Inputs__ is a module to read a keyboard. Only read the values to get if the key was pressed. The horizontal or and vertical axis are defined like 1, 0 or -1. There are 2 axis and 4 keys to read in the device driver.
 ```
 if input.horizontal > 0
 	MoveToRight : speed
@@ -219,13 +219,11 @@ $2 __compa__: First argument in a logic operation.
 $3 __compb__: Second argument in a logic operation.
 $4 __target__: Used to stores temporarily values that will used in operations or to transport values between registers.
 
-For while, the register $7 and $8 are used by video driver to stores the render instructions.
+For while, the register $7 and $8 are used by video driver to stores the render instructions. You can check the assembly in the table below:
 
-You can check the assembly in the table below:
-
-| ID | OpCode  | Name | Function |
-| ------------- | ------------- | ------------- |
-|0|00000 | SET | *target* recives __data__ value |
+| ID | OpCode  | Name | Description | 
+| ------------- | ------------- | ------------- | ------------- |
+| 0 | 00000 | SET | *target* recives __data__ value |
 |1|00001 | MOVE IN | *target* recives the value of __data__ address|
 |2|00010 | MOVE OUT | Address memory defined by __data__ recives the value in*target*  address|
 |3|00011 | GOTO | *PC* = __data__ |
@@ -273,7 +271,7 @@ SUM				: $44		//$44 recives the sum of worka and workb
 
 ```
 
-#Quick Start
+# Quick Start
 
 + Look and download the Iti Machine
 + Goto Project > Scripts*
@@ -373,7 +371,7 @@ video.draw8 : 80 96 0 1
 ```
 
 
-#Next Features
+# Next Features
 
 + Emulator:
 	+ Audio driver support
