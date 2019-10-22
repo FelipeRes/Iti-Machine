@@ -259,15 +259,15 @@ c = a + b		//$44 memory adrress
 
 
 //Assembly convertion:
-SET			  	: 123			//target recives the 123 immediate
+SET		: 123		//target recives the 123 immediate
 MOVE OUT 	: $22		//$22 address recives the value of target
-MOVE IN 		: $22 		//stores the value of $22 in target
-MOVE OUT 	 : $33 		//The $33 recives the value from target
+MOVE IN 	: $22 		//stores the value of $22 in target
+MOVE OUT 	: $33 		//The $33 recives the value from target
 MOVE IN	 	: $22		//target recives the value from $44
-MOVE OUT 	: $0		  //worka recives the value of target
+MOVE OUT 	: $0		//worka recives the value of target
 MOVE IN		: $33 		//target recives the value from $22
-MOVE OUT 	:$1			//workb recives the value from target
-SUM				: $44		//$44 recives the sum of worka and workb
+MOVE OUT 	: $1		//workb recives the value from target
+SUM		: $44		//$44 recives the sum of worka and workb
 
 ```
 
