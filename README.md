@@ -208,16 +208,16 @@ __Table of inputs and keyboard reference:__
 | input.earth  | E key |
 | input.air | F key |
 
-#Iti Machine Architecture
+# Iti Machine Architecture
 The Iti Machine cpu has 26 instructions with 32-bit register. The first 5 bits from left define the instruction to run and the others 27 are used to data. The machine has 1024 register to stack and 7 special registers:
 
-__PC__: Defines the current instruction to read.
-__stackCount__: Defines the lenght of stack.
-$0 __worka__: First argument in a matematic operation.
-$1 __workb__: Second argument in a matematic operation.
-$2 __compa__: First argument in a logic operation.
-$3 __compb__: Second argument in a logic operation.
-$4 __target__: Used to stores temporarily values that will used in operations or to transport values between registers.
++ __PC__: Defines the current instruction to read.
++ __stackCount__: Defines the lenght of stack.
++ $0 __worka__: First argument in a matematic operation.
++ $1 __workb__: Second argument in a matematic operation.
++ $2 __compa__: First argument in a logic operation.
++ $3 __compb__: Second argument in a logic operation.
++ $4 __target__: Used to stores temporarily values that will used in operations or to transport values between registers.
 
 For while, the register $7 and $8 are used by video driver to stores the render instructions. You can check the assembly in the table below:
 
@@ -225,7 +225,7 @@ For while, the register $7 and $8 are used by video driver to stores the render 
 | ------------- | ------------- | ------------- | ------------- |
 | 0 | 00000 | SET | *target* recives __data__ value |
 |1|00001 | MOVE IN | *target* recives the value of __data__ address|
-|2|00010 | MOVE OUT | Address memory defined by __data__ recives the value in*target*  address|
+|2|00010 | MOVE OUT | Address memory defined by __data__ recives the value in *target*  address|
 |3|00011 | GOTO | *PC* = __data__ |
 |4|00100 | JUMP | *PC*  = value of memory defined by __data__ |
 |5|00101 | ENQUEE | The top of stack recives the value of __data__. *StackCount*  +1.|
