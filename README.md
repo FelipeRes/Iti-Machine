@@ -64,10 +64,10 @@ y = 120 + a / 23 << 3
 There aren't parentesis in this language and the expression are readed in the order of operators from left to right. Remember, the spaces between operators are important:
 ```javascript
 //Don't make this
-my_var = a+b					// a variable are touching in b.
-x= a * 4 								// x variable are touching in = operator.
+my_var = a+b					//variable a is touching in b.
+x= a * 4 								// variable x is touching in = operator.
 time = (a + b)*deltatime	// There aren't parentesis.
-a = b + x = d						// = oprator is used only to set a variable to expression.
+a = b + x = d						// = oprator is used only to set variable a to expression.
 ```
 __If__ statment uses to expressions and make a logic operation between the results. If the result is true, the code inside the block will run. In the end, close the block with *endif*. You can uses only one logic operator by *if* statement.
 ```javascript
